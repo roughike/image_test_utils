@@ -1,0 +1,11 @@
+name: image_test_utils
+description: A helper library that makes it easier to write widget tests for Image.network widgets.
+version: 1.0.0
+homepage: https://github.com/roughike/image_test_utils
+author: Iiro Krankka <iiro.krankka@gmail.com>
+
+environment:
+  sdk: '>=2.0.0 <3.0.0'
+
+dependencies:
+  mockito: ^3.0.0
