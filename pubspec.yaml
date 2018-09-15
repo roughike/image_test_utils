@@ -1,5 +1,5 @@
 name: image_test_utils
-description: Makes it easier to provide mocked responses for Image.network widgets in widget tests.
+description: Makes it easier to provide mocked responses for Image.network widgets in Flutter widget tests.
 version: 1.0.0
 homepage: https://github.com/roughike/image_test_utils
 author: Iiro Krankka <iiro.krankka@gmail.com>
