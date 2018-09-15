@@ -39,6 +39,9 @@ import 'package:mockito/mockito.dart';
 ///
 /// * https://github.com/flutter/flutter/issues/13433
 /// * https://github.com/flutter/flutter_markdown/pull/17
+///
+/// The underlying code is taken from the Flutter repo:
+/// https://github.com/flutter/flutter/blob/master/dev/manual_tests/test/mock_image_http.dart
 R provideMockedNetworkImages<R>(R body(), {List<int> imageBytes = _transparentImage}) {
   return HttpOverrides.runZoned(
     body,
