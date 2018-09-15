@@ -1,5 +1,8 @@
 # image_test_utils
 
+[![pub package](https://img.shields.io/pub/v/image_test_utils.svg)](https://pub.dartlang.org/packages/image_test_utils)
+ [![Build Status](https://travis-ci.org/roughike/image_test_utils.svg?branch=master)](https://travis-ci.org/roughike/image_test_utils) 
+
 Without providing mocked responses, any widget test that pumps up `Image.network` widgets will crash.
 
 Copy-pasting [the code for mocking the image responses](https://github.com/flutter/flutter/blob/master/dev/manual_tests/test/mock_image_http.dart) to every new project gets a little boring. This helper library makes it easier to provide those mocked image responses.
