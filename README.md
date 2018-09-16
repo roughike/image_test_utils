@@ -5,6 +5,8 @@
 
 Without providing mocked responses, any widget test that pumps up `Image.network` widgets will crash.
 
+[There's a blog post that goes more into detail on this.](https://iirokrankka.com/2018/09/16/image-network-widget-tests/)
+
 Copy-pasting [the code for mocking the image responses](https://github.com/flutter/flutter/blob/master/dev/manual_tests/test/mock_image_http.dart) to every new project gets a little boring. This helper library makes it easier to provide those mocked image responses.
 
 ## Usage
