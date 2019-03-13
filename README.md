@@ -31,7 +31,7 @@ import 'package:image_test_utils/image_test_utils.dart';
 
 void main() {
   testWidgets('should not crash', (WidgetTester tester) async {
-    provideMockedNetworkImages(() async {
+    await provideMockedNetworkImages(() async {
       /// Now we can pump NetworkImages without crashing our tests. Yay!
       await tester.pumpWidget(
         MaterialApp(
