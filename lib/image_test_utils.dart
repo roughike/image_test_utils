@@ -55,22 +55,22 @@ class MockHttpClientResponse extends Mock implements HttpClientResponse {}
 class MockHttpHeaders extends Mock implements HttpHeaders {}
 
 // Returns a mock HTTP client that responds with an image to all requests.
-MockHttpClient _createMockImageHttpClient(SecurityContext _, List<int> imageBytes) {
+MockHttpClient _createMockImageHttpClient(SecurityContext? _, List<int> imageBytes) {
   final MockHttpClient client = MockHttpClient();
   final MockHttpClientRequest request = MockHttpClientRequest();
   final MockHttpClientResponse response = MockHttpClientResponse();
   final MockHttpHeaders headers = MockHttpHeaders();
 
-  when(client.getUrl(any)).thenAnswer((_) => Future<HttpClientRequest>.value(request));
+  when(client.getUrl(any!)).thenAnswer((_) => Future<HttpClientRequest>.value(request));
   when(request.headers).thenReturn(headers);
   when(request.close()).thenAnswer((_) => Future<HttpClientResponse>.value(response));
   when(response.contentLength).thenReturn(_transparentImage.length);
   when(response.statusCode).thenReturn(HttpStatus.ok);
   when(response.listen(any)).thenAnswer((Invocation invocation) {
-    final void Function(List<int>) onData = invocation.positionalArguments[0];
-    final void Function() onDone = invocation.namedArguments[#onDone];
-    final void Function(Object, [StackTrace]) onError = invocation.namedArguments[#onError];
-    final bool cancelOnError = invocation.namedArguments[#cancelOnError];
+    final void Function(List<int>)? onData = invocation.positionalArguments[0];
+    final void Function()? onDone = invocation.namedArguments[#onDone];
+    final void Function(Object, [StackTrace?])? onError = invocation.namedArguments[#onError];
+    final bool? cancelOnError = invocation.namedArguments[#cancelOnError];
 
     return Stream<List<int>>.fromIterable(<List<int>>[imageBytes])
         .listen(onData, onDone: onDone, onError: onError, cancelOnError: cancelOnError);
