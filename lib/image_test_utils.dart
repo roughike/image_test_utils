@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 
-import 'package:mockito/mockito.dart';
+import 'package:mocktail/mocktail.dart';
 
 /// Runs [body] in a fresh [Zone] that provides mocked responses for [Image.network] widgets.
 ///
@@ -61,12 +61,12 @@ MockHttpClient _createMockImageHttpClient(SecurityContext? _, List<int> imageByt
   final MockHttpClientResponse response = MockHttpClientResponse();
   final MockHttpHeaders headers = MockHttpHeaders();
 
-  when(client.getUrl(any!)).thenAnswer((_) => Future<HttpClientRequest>.value(request));
-  when(request.headers).thenReturn(headers);
-  when(request.close()).thenAnswer((_) => Future<HttpClientResponse>.value(response));
-  when(response.contentLength).thenReturn(_transparentImage.length);
-  when(response.statusCode).thenReturn(HttpStatus.ok);
-  when(response.listen(any)).thenAnswer((Invocation invocation) {
+  when(() => client.getUrl(any())).thenAnswer((_) => Future<HttpClientRequest>.value(request));
+  when(() => request.headers).thenReturn(headers);
+  when(() => request.close()).thenAnswer((_) => Future<HttpClientResponse>.value(response));
+  when(() => response.contentLength).thenReturn(_transparentImage.length);
+  when(() => response.statusCode).thenReturn(HttpStatus.ok);
+  when(() => response.listen(any())).thenAnswer((Invocation invocation) {
     final void Function(List<int>)? onData = invocation.positionalArguments[0];
     final void Function()? onDone = invocation.namedArguments[#onDone];
     final void Function(Object, [StackTrace?])? onError = invocation.namedArguments[#onError];
