@@ -62,9 +62,11 @@ MockHttpClient _createMockImageHttpClient(SecurityContext? _, List<int> imageByt
   final MockHttpHeaders headers = MockHttpHeaders();
 
   when(() => client.getUrl(any())).thenAnswer((_) => Future<HttpClientRequest>.value(request));
+  when(() => client.getUrl(any())).thenAnswer((_) => Future<HttpClientRequest>.value(request));
   when(() => request.headers).thenReturn(headers);
   when(() => request.close()).thenAnswer((_) => Future<HttpClientResponse>.value(response));
   when(() => response.contentLength).thenReturn(_transparentImage.length);
+  when(() => response.compressionState).thenReturn(HttpClientResponseCompressionState.notCompressed);
   when(() => response.statusCode).thenReturn(HttpStatus.ok);
   when(() => response.listen(any())).thenAnswer((Invocation invocation) {
     final void Function(List<int>)? onData = invocation.positionalArguments[0];
