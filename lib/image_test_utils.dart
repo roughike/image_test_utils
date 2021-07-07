@@ -68,7 +68,7 @@ MockHttpClient _createMockImageHttpClient(SecurityContext? _, List<int> imageByt
   when(() => response.contentLength).thenReturn(_transparentImage.length);
   when(() => response.compressionState).thenReturn(HttpClientResponseCompressionState.notCompressed);
   when(() => response.statusCode).thenReturn(HttpStatus.ok);
-  when(() => response.listen(any(), onError: any(), onDone: any())).thenAnswer((Invocation invocation) {
+  when(() => response.listen(any(), onError: any(named: "onError"), onDone: any(named: "onDone"))).thenAnswer((Invocation invocation) {
     final void Function(List<int>)? onData = invocation.positionalArguments[0];
     final void Function()? onDone = invocation.namedArguments[#onDone];
     final void Function(Object, [StackTrace?])? onError = invocation.namedArguments[#onError];
